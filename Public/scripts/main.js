@@ -56,6 +56,7 @@ function storeMessage (content, time,user) {
     data: {content: content, userName: user , time: time}
   });
 }
+const socket = io();
 
 
 $(document).ready(function () {
@@ -63,9 +64,12 @@ $(document).ready(function () {
   getStoredMessages();
 
   $('#target').submit(function (event) {
+
+
     const textbox = $('#textbox');
     event.preventDefault();
     const content = textbox.val();
+    socket.emit('chat message',content);
     let time = moment().format('lll');
     renderQuote(content, time, 'user');
     textbox.val('');

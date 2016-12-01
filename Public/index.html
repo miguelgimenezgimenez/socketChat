@@ -5,9 +5,11 @@
 	<title>Chat Client</title>
 	<link rel="stylesheet" href="style.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-
+	<script src="/socket.io/socket.io.js"></script>
+	<script src= "./scripts/socket.js">	</script>
 	<script src ="./scripts/main.js"></script>
 	<script src ="./scripts/moment.js"></script>
+
 </head>
 <body>
 
@@ -38,9 +40,13 @@
 </section>
 <div class="chatWindow"></div>
 <div id="messageBox">
+    <form action="">
+        <input id="m" autocomplete="off" /><button>Send</button>
+    </form>
 	<form id= "target">
 		<input type="text" id="textbox" placeholder="type message">
 	</form>
+
 </div>
 
 </body>

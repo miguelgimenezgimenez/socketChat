@@ -1,0 +1,33 @@
+{
+  "name": "socketio",
+  "version": "1.0.0",
+  "description": "chat",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/miguelgimenezgimenez/socketChat.git"
+  },
+  "keywords": [
+    "chat"
+  ],
+  "author": "miguel",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/miguelgimenezgimenez/socketChat/issues"
+  },
+  "homepage": "https://github.com/miguelgimenezgimenez/socketChat#readme",
+  "dependencies": {
+    "handlebars": "^4.0.6",
+    "koa": "^1.2.4",
+    "koa-bodyparser": "^2.3.0",
+    "koa-pug": "^3.0.0-1",
+    "koa-router": "^5.4.0",
+    "koa-static": "^2.0.0",
+    "mongoose": "^4.7.1",
+    "pug": "^2.0.0-beta6",
+    "socket.io": "^1.7.1"
+  }
+}

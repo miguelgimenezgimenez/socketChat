@@ -16,6 +16,8 @@ const io = require('socket.io')(http);
 const message = require('./controllers/message');
 
 
+
+
 io.on('connection', function(socket){
 
   socket.on('newConnection', function (user) {
@@ -23,6 +25,7 @@ io.on('connection', function(socket){
       resolve(message.getAll());
     });
     msg.then(function (content) {
+      console.log(content);
       socket.emit('getmessages',content  );
     });
   });

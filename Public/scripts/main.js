@@ -4,16 +4,13 @@ function renderQuote (content, timestamp,user, dontstore) {
 
   let msgDiv = $('<div>');
   msgDiv.addClass('messageBubble');
-  console.log(user);
   if (user === 'user') {
     msgDiv.addClass('user');
   }
-  msgDiv.html(content);
+  msgDiv.html(content + user);
   let time = $('<p>');
   time.html(timestamp);
   msgDiv.append(time);
-
-
 
   $('.chatWindow').append(msgDiv);
 
@@ -42,8 +39,7 @@ function getStoredMessages () {
 
   });
   function  printMessages(msgArray) {
-    for (var i in msgArray) {
-      console.log(msgArray);
+    for (let i in msgArray) {
       const msg =msgArray[i];
       renderQuote(msg.content, msg.timestamp, msg.userName,true);
     }
@@ -60,18 +56,17 @@ const socket = io();
 
 
 $(document).ready(function () {
+  const name = prompt("enter username");
 
   getStoredMessages();
 
   $('#target').submit(function (event) {
-
-
     const textbox = $('#textbox');
     event.preventDefault();
     const content = textbox.val();
     socket.emit('chat message',content);
     let time = moment().format('lll');
-    renderQuote(content, time, 'user');
+    renderQuote(content, time, name);
     textbox.val('');
     setTimeout(function () {
       getQuote();

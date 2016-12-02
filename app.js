@@ -13,13 +13,24 @@ app.use(serve(__dirname + '/Public'));
 
 const http = require('http').Server(app.callback());
 const io = require('socket.io')(http);
-
+const message = require('./controllers/message');
 
 
 io.on('connection', function(socket){
-  console.log('connected');
+
+  socket.on('newConnection', function (user) {
+    const msg = new Promise(function (resolve, reject) {
+      resolve(message.getAll());
+    });
+    msg.then(function (content) {
+      socket.emit('getmessages',content  );
+    });
+  });
+
   socket.on('chat message', function(msg){
-    console.log('message: ' + msg);
+    message.post(msg);
+    socket.broadcast.emit('getmessages', [msg]);
+    console.log('message: ' + msg.content);
   });
 });
 

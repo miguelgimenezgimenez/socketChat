@@ -14,8 +14,7 @@ app.use(serve(__dirname + '/Public'));
 const http = require('http').Server(app.callback());
 const io = require('socket.io')(http);
 const message = require('./controllers/message');
-
-
+const pug = require('pug');
 
 
 io.on('connection', function(socket){
@@ -25,15 +24,17 @@ io.on('connection', function(socket){
       resolve(message.getAll());
     });
     msg.then(function (content) {
-      console.log(content);
       socket.emit('getmessages',content  );
     });
   });
 
   socket.on('chat message', function(msg){
     message.post(msg);
-    socket.broadcast.emit('getmessages', [msg]);
-    console.log('message: ' + msg.content);
+    console.log(msg);
+    const myTemplate = pug.renderFile(__dirname + '/View/messageTemplate.pug',{message: msg.content, user:msg.userName, timestamp: msg.timestamp});
+    console.log(myTemplate);
+    
+    io.emit('getmessages',[myTemplate]);
   });
 });
 

@@ -10,7 +10,8 @@ exports.getAll = function  () {
     return Message.find().then(function (content) {
       const output=[];
       content.forEach(function (msg) {
-        const myTemplate = pug.renderFile(__dirname + '/../View/messageTemplate.pug',{message: msg.content});
+        console.log(msg);
+        const myTemplate = pug.renderFile(__dirname + '/../View/messageTemplate.pug',{message: msg.content, user:msg.userName, timestamp: msg.timestamp});
         output.push(myTemplate);
       });
 
@@ -21,7 +22,7 @@ exports.getAll = function  () {
 exports.post = function (msg) {
   const newMsg = new Message({
     content: msg.content,
-    timestamp: msg.timeStamp,
+    timestamp: msg.timestamp,
     userName: msg.userName
   });
   let savems = function * () {

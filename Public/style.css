@@ -1,6 +1,6 @@
-body,p {
+body{
     font-family:Arial, Helvetica, sans-serif;
-    font-size:14px;
+    font-size:18px;
     margin:0;
     color: lightgray;;
 }
@@ -12,6 +12,11 @@ h3 {
 h4 {
     color: lightgray;
     margin: 0;
+}
+.time{
+    font-size: 9px;
+    color: #888888;
+    font-style: italic;
 }
 
 header {
@@ -48,6 +53,27 @@ header {
     overflow: scroll;
 
 }
+.messageContent {
+    display: flex;
+    align-items: baseline;
+    flex-direction: column;
+    /*border: solid #888888 0px;*/
+    box-shadow: 0px 0px 0px 1px rgba(0,0,0,0.1);
+    border-radius: 5px;
+    margin-bottom: 8px;
+    padding: 3px;
+    color: black;
+
+}
+.messageDetails {
+    display: flex;
+    align-items: baseline;
+    flex-direction: row;
+    justify-content: space-between;
+    color: darkcyan;
+    font-weight: 600;
+}
+
 
 #messageBox {
     width: 80%;
@@ -79,6 +105,10 @@ li {
 
 .directMessages {
 
+}
+p{
+    margin: 2px 8px;
+    font-size: 14px;
 }
 
 .userInfo {

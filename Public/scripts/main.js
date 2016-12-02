@@ -39,6 +39,7 @@ function getStoredMessages () {
 
   });
   function  printMessages(msgArray) {
+    console.log(msgArray);
     for (let i in msgArray) {
       const msg =msgArray[i];
       renderQuote(msg.content, msg.timestamp, msg.userName,true);

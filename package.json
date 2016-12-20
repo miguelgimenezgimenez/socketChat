@@ -23,6 +23,7 @@
     "handlebars": "^4.0.6",
     "koa": "^1.2.4",
     "koa-bodyparser": "^2.3.0",
+    "koa-params": "^1.1.0",
     "koa-pug": "^3.0.0-1",
     "koa-router": "^5.4.0",
     "koa-static": "^2.0.0",

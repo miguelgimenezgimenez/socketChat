@@ -18,6 +18,7 @@ const pug = require('pug');
 
 
 io.on('connection', function(socket){
+  console.log(io.sockets.adapter.sids[socket.id][roomname]  );
 
   socket.on('newConnection', function (user) {
     const msg = new Promise(function (resolve, reject) {
@@ -30,10 +31,7 @@ io.on('connection', function(socket){
 
   socket.on('chat message', function(msg){
     message.post(msg);
-    console.log(msg);
     const myTemplate = pug.renderFile(__dirname + '/View/messageTemplate.pug',{message: msg.content, user:msg.userName, timestamp: msg.timestamp});
-    console.log(myTemplate);
-    
     io.emit('getmessages',[myTemplate]);
   });
 });
